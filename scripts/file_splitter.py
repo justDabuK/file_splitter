@@ -104,13 +104,18 @@ def create_complete(dict_list, file_name, headline):
     :param file_name: the original name that will be the postfix for file
     :param headline: the headline that each file gets
     """
-    with open("output/complete_" + file_name + ".txt", "w") as output_file:
 
+    # open the output file
+    with open("output/complete_" + file_name + ".txt", "w") as output_file:
+        # add the headline to the top of the file
         output_file.write(
             headline)
 
+        # for every data entry
         for dict_entry in dict_list:
+            # for every gene
             for gene in dict_entry["Genes"].split(","):
+                # write the data in the same order as it is in the headline
                 output_file.write(dict_entry["Category"] + "\t" +
                                   dict_entry["Term"] + "\t" +
                                   dict_entry["Count"] + "\t" +
@@ -125,6 +130,7 @@ def create_complete(dict_list, file_name, headline):
                                   dict_entry["Benjamini"] + "\t" +
                                   dict_entry["FDR"] + "\t" +
                                   str(-math.log(float(dict_entry["PValue"]), 10)) + "\n")
+
     print "INFO: created the complete data file"
 
 
