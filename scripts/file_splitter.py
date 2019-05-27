@@ -33,7 +33,6 @@ def split_file(csv_path):
         print "INFO: directory 'output' already exists, will probably overwrite the old data"
 
     # get the original filename from the csv_path
-    file_name = None
     if "/" in csv_path:
         file_name = csv_path.split("/")[-1].split(".")[0]
     elif "\\" in csv_path:
