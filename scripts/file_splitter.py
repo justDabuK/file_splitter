@@ -33,7 +33,13 @@ def split_file(csv_path):
         print "INFO: directory 'output' already exists, will probably overwrite the old data"
 
     # get the original filename from the csv_path
-    file_name = csv_path.split("/")[-1].split(".")[0]
+    file_name = None
+    if "/" in csv_path:
+        file_name = csv_path.split("/")[-1].split(".")[0]
+    elif "\\" in csv_path:
+        file_name = csv_path.split("\\")[-1].split(".")[0]
+    else:
+        file_name = csv_path.split(".")[0]
 
     # create the file containing all data rows
     create_complete(dict_list, file_name, headline)
