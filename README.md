@@ -1,6 +1,14 @@
 # File splitter
-The script splits the data entries by genes, and writes them into a file containing all entries and into sub files that
+The script has two modes one for chart files and one for cluster files. 
+
+## chart
+The `chart` mode splits the data entries by genes, and writes them into a file containing all entries and into sub files that
 contain only 50 data rows each.
+
+## cluster
+The `cluster` mode splits the cluster file into chart like files, each containing the data of one cluster. The cluster 
+info is added as additional columns. Afterwards each chart like file gets handled like
+the usual chart files.
 
 ## Requirements
 You need to have python 2.7 installed. You can test this by executing 
@@ -16,11 +24,12 @@ in a terminal. The output should look like
 
 You'll need to execute it in a terminal like
 
-    python file_splitter.py [file_path]
+    python file_splitter.py [file_path] [chart|cluster]
     
-where `file_path` is the path leading to the data file. An example call would be
+where `file_path` is the path leading to the data file. The second argument defines how the
+file gets handled. An example call would be
 
-    python file_splitter.py path/to/chart.txt
+    python file_splitter.py path/to/chart.txt chart
     
 This will produce an output like
 
@@ -34,3 +43,5 @@ tells you that it created the file with all the data, and the splitted files.
 
 You will find all files in the created `output` folder, in the directory in which 
 you executed the script. 
+
+In case of handling a cluster, you will find all output files in `output/cluster`.
