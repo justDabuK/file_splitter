@@ -148,9 +148,9 @@ def handle_cluster(file_path):
     """
     # create the output directory if it doesn't exist
     try:
-        os.mkdir("output/cluster")
+        os.mkdir("output")
     except OSError as e:
-        print "INFO: directory 'output/cluster' already exists, will probably overwrite the old data"
+        print "INFO: directory 'output' already exists, will probably overwrite the old data"
 
     # the paths to the created lonely cluster files gonna be stored
     output_files = []
@@ -179,7 +179,7 @@ def handle_cluster(file_path):
                         2] + "\r\n")
 
                 # print the file and story the path to it
-                output_path = "output/cluster/cluster_" + str(cluster_num) + ".txt"
+                output_path = "output/cluster_" + str(cluster_num) + ".txt"
                 output_files.append(output_path)
                 with open(output_path, "w") as output_file:
                     for i in range(1, len(lines_to_print)):
@@ -218,7 +218,7 @@ def split_cluster_charts(csv_path):
 
     # create the output directory if it doesn't exist
     try:
-        os.mkdir("output/cluster")
+        os.mkdir("output")
     except OSError as e:
         print "INFO: directory 'output' already exists, will probably overwrite the old data"
 
@@ -263,7 +263,7 @@ def create_cluster_parts(dict_list, file_name, headline):
                 line_counter = 0
 
                 # create a new csv_file and write the headline into it
-                csv_file = open("output/cluster/" + file_name + "_part_" + str(file_counter) + ".txt", "w")
+                csv_file = open("output/" + file_name + "_part_" + str(file_counter) + ".txt", "w")
                 csv_file.write(headline)
 
                 # increase the file counter
@@ -302,7 +302,7 @@ def create_cluster_complete(dict_list, file_name, headline):
     """
 
     # open the output file
-    with open("output/cluster/complete_" + file_name + ".txt", "w") as output_file:
+    with open("output/complete_" + file_name + ".txt", "w") as output_file:
         # add the headline to the top of the file
         output_file.write(
             headline)
